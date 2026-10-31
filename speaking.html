@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+img{display:block;max-width:100%}
+</style>
+</helmet>
+
+<div data-screen-label="Speaking" style="min-height:100vh;background:#FFFFFF;color:#0C0E13;font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.5">
+<div style="min-height:100vh;container-type:inline-size">
+
+  <header style="position:sticky;top:0;z-index:20;background:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:10px clamp(16px,3cqi,32px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="index.html" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
+        <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/6296ea32ea18711b6f1cddde_mobilelogo.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+        <nav style="display:flex;gap:2px;align-items:center">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+            <a href="{{ n.href }}" aria-current="{{ n.current }}" style="min-height:44px;display:flex;align-items:center;padding:0 12px;border-radius:999px;font-weight:600;font-size:15px;color:{{ n.color }}" style-hover="color:#0C0E13">{{ n.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <a href="contact.html" style="min-height:44px;display:flex;align-items:center;padding:0 18px;white-space:nowrap;border-radius:999px;border:1.5px solid #0C0E13;color:#0C0E13;font-weight:600;font-size:15px" style-hover="background:#0C0E13;color:#FFFFFF">Let’s talk</a>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #0C0E13;background:#FFFFFF;color:#0C0E13;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">
+            <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            </sc-if>
+            <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </sc-if>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Menu" style="position:absolute;left:0;right:0;top:100%;height:calc(100vh - 64px);background:#FFFFFF;padding:16px 16px 32px;display:flex;flex-direction:column;gap:4px;overflow-y:auto;border-top:1px solid #E3E6EE">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+          <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E3E6EE;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em;color:#0C0E13">{{ n.label }}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </sc-for>
+      </nav>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Hero" style="display:flex;flex-direction:column">
+      <div style="position:relative;height:400px;background:#3A3B3F">
+        <image-slot id="speaking-hero" shape="rect" placeholder="Drop photo: Tony on stage, mid-gesture" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0),#FFFFFF);pointer-events:none"></div>
+      </div>
+      <div style="padding:0 16px;margin-top:-40px;position:relative;display:flex;flex-direction:column;gap:16px">
+        <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Speaking and media</div>
+        <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(46px,14cqi,64px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">I’m not here to teach. I’m here to share.</h1>
+        <p style="margin:0;color:#2A2D38;text-wrap:pretty">I don’t want to teach you something you’ll never use. I want to tell you what worked and what didn’t, give you a few ideas that might fit what you’re going through, and show you how to take a complex problem and make it as simple as tic-tac-toe. One, two, three.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+          <a href="contact.html" style="min-height:56px;padding:0 22px;border-radius:999px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="background:#1E46B8;color:#FFFFFF">Book me for your event <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Hero" style="max-width:1240px;margin:0 auto;padding:24px 32px 0">
+      <div style="border-radius:36px;overflow:hidden;background:#F3F5F9;display:flex;align-items:stretch">
+        <div style="flex:1 1 0;padding:clamp(40px,5cqi,72px);display:flex;flex-direction:column;justify-content:center;gap:20px">
+          <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Speaking and media</div>
+          <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(56px,6.4cqi,84px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">I’m not here to teach. I’m here to share.</h1>
+          <p style="margin:0;color:#2A2D38;max-width:30em;text-wrap:pretty">I don’t want to teach you something you’ll never use. I want to tell you what worked and what didn’t, give you a few ideas that might fit what you’re going through, and show you how to take a complex problem and make it as simple as tic-tac-toe. One, two, three.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px">
+            <a href="contact.html" style="min-width:300px;min-height:56px;padding:0 22px;border-radius:999px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="background:#1E46B8;color:#FFFFFF">Book me for your event <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <div style="flex:1 1 0;min-height:clamp(500px,52cqi,660px);position:relative;background:#3A3B3F">
+          <image-slot id="speaking-hero-desktop" shape="rect" placeholder="Drop photo: Tony on stage, mid-gesture" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section aria-label="Mantra" style="background:#FFC53D;color:#0C0E13;margin-top:clamp(40px,6cqi,80px)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,5cqi,64px) clamp(16px,3cqi,32px)">
+      <p style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,5.4cqi,72px);line-height:1;letter-spacing:-.01em">Share, don’t teach.<br>Make it simple.<br>Leave them something to use.</p>
+    </div>
+  </section>
+
+  <main style="max-width:1240px;margin:0 auto;padding:clamp(40px,6cqi,88px) clamp(16px,3cqi,32px) clamp(48px,6cqi,96px);display:flex;flex-direction:column;gap:clamp(56px,7cqi,104px)">
+
+    <section aria-label="Topics" style="border-radius:28px;background:#2F62E8;color:#FFFFFF;padding:clamp(20px,5cqi,72px) clamp(16px,5cqi,72px) clamp(20px,5cqi,72px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance;padding:8px 4px 0">What I talk about.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px">
+        <div style="border-radius:24px;background:#FFFFFF;color:#0C0E13;padding:clamp(20px,3cqi,32px);display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.1;text-wrap:balance">Your message is in your mess</h3>
+          <p style="margin:0;color:#2A2D38;font-size:16px;text-wrap:pretty">The stuff you hide is the stuff that connects. How telling the truth about the hard years made me a better leader.</p>
+        </div>
+        <div style="border-radius:24px;background:#FFFFFF;color:#0C0E13;padding:clamp(20px,3cqi,32px);display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.1;text-wrap:balance">Walking around life’s dumpster</h3>
+          <p style="margin:0;color:#2A2D38;font-size:16px;text-wrap:pretty">We all push our past in front of us. The people we love are standing on the other side of it. Here’s how to get to them.</p>
+        </div>
+        <div style="border-radius:24px;background:#FFFFFF;color:#0C0E13;padding:clamp(20px,3cqi,32px);display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.1;text-wrap:balance">Tic-tac-toe problem solving</h3>
+          <p style="margin:0;color:#2A2D38;font-size:16px;text-wrap:pretty">Most complex problems come down to three moves. I’ll show your people how to find them, in business and at home. One, two, three.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Destroying Excuses" style="border-radius:28px;background:#0C0E13;color:#FFFFFF;overflow:hidden;display:flex;flex-wrap:wrap">
+      <div style="flex:1 1 360px;padding:clamp(24px,5cqi,64px);display:flex;flex-direction:column;gap:16px">
+        <div style="width:min(100%,260px);height:72px;border-radius:8px;overflow:hidden">
+          <image-slot id="speaking-de-logo" shape="rect" placeholder="Drop Destroying Excuses logo" style="width:100%;height:100%"></image-slot>
+        </div>
+        <div style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#FFC53D;padding-top:8px">The live event</div>
+        <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Destroying Excuses.</h2>
+        <p style="margin:0;color:#FFFFFF;max-width:30em;text-wrap:pretty">The science of living a fulfilled day. One room, one day, and a group of people who stopped negotiating with their excuses. Excuses are just insecurities disguised as reasons.</p>
+        <a href="contact.html" style="align-self:stretch;max-width:420px;min-height:56px;margin-top:8px;padding:0 22px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;filter:brightness(.95)">Ask about the next one <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+      <div style="flex:1 1 360px;min-height:320px;position:relative;background:#1A1C22">
+        <image-slot id="speaking-de-photo" shape="rect" placeholder="Drop photo: Destroying Excuses event room" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+    </section>
+
+    <section aria-label="Out in the world" style="display:flex;flex-direction:column;gap:14px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Out in the world.</h2>
+      <p style="margin:0;color:#2A2D38;max-width:30em">Connection and contribution. Those are the only two reasons I get on a plane.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(45%,220px),1fr));gap:clamp(12px,2cqi,20px);padding-top:8px">
+        <sc-for list="{{ events }}" as="ev" hint-placeholder-count="6">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:8px">
+            <div style="aspect-ratio:1/1;border-radius:16px;overflow:hidden;background:#F3F5F9">
+              <image-slot id="{{ ev.slot }}" shape="rect" placeholder="{{ ev.ph }}" style="width:100%;height:100%"></image-slot>
+            </div>
+            <figcaption style="font-size:15px;color:#4A4D58">{{ ev.name }}</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-label="Shows" style="display:flex;flex-direction:column;gap:12px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Shows I’ve been on.</h2>
+      <p style="margin:0;color:#2A2D38">Tap any cover to listen.</p>
+      <div style="display:flex;gap:10px;overflow-x:auto;padding:8px 0;scroll-snap-type:x mandatory;margin-right:calc(-1 * clamp(16px,3cqi,32px))">
+        <sc-if value="{{ hasShows }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ shows }}" as="s" hint-placeholder-count="0">
+          <a href="{{ s.href }}" target="_blank" rel="noopener" aria-label="{{ s.name }}" style="flex:0 0 auto;width:clamp(84px,14cqi,160px);scroll-snap-align:start">
+            <img loading="lazy" src="{{ s.img }}" alt="{{ s.name }}" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:#F3F5F9">
+          </a>
+        </sc-for></sc-if>
+      </div>
+    </section>
+
+    <section aria-label="Book Tony" style="border-radius:28px;background:#2F62E8;color:#FFFFFF;padding:clamp(28px,6cqi,88px);display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(34px,5.4cqi,72px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Have a stage or a mic?</h2>
+      <p style="margin:0;color:#FFFFFF;max-width:30em;text-wrap:pretty">Tell me who’s in the room and what they’re wrestling with. I’ll bring what worked, what didn’t, and a few ideas they can use before they get back to their desk.</p>
+      <a href="contact.html" style="align-self:stretch;max-width:420px;min-height:56px;padding:0 22px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;filter:brightness(.95)">Start the conversation <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </section>
+  </main>
+
+  <footer style="background:#0C0E13;color:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5cqi,64px) clamp(16px,3cqi,32px) 28px;display:flex;flex-direction:column;gap:24px">
+      <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/5f39620bde1569493e2f2cef_tonysignature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:18px;max-width:26em">Until next time, make today the absolute best day of your life.</p>
+      <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px">
+        <sc-for list="{{ navItems }}" as="f" hint-placeholder-count="7">
+          <a href="{{ f.href }}" style="min-height:44px;display:flex;align-items:center;font-weight:600;color:#FFFFFF" style-hover="color:#FFC53D">{{ f.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;gap:12px">
+        <a href="https://www.facebook.com/tonygrebmeier" target="_blank" rel="noopener" aria-label="Facebook" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF" style-hover="border-color:#FFFFFF;color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v8h4v-8h3l.5-4h-3.5V9c0-.6.4-1 1-1z"></path></svg></a>
+        <a href="https://instagram.com/tonygrebmeier" target="_blank" rel="noopener" aria-label="Instagram" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF" style-hover="border-color:#FFFFFF;color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://www.linkedin.com/in/tony-g-6b1b68226" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:700;font-size:17px" style-hover="border-color:#FFFFFF;color:#FFFFFF">in</a>
+      </div>
+      <div style="height:1px;background:#2A2D38"></div>
+      <a href="policies.html" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
+      <div style="font-size:14px;color:#B9BDC9">© 2026 TAEO LLC</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menu: window.innerWidth < 820 ? this.state.menu : false });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const isMobile = this.state.w < 820;
+    const menu = isMobile && this.state.menu;
+    const pages = { Story:'index.html', Podcast:'podcast.html', Speaking:'speaking.html', Journal:'journal.html', Courses:'courses.html', Blog:'#', Contact:'contact.html' };
+    const navItems = Object.entries(pages).map(([label, href]) => ({ label, href, current: label === 'Speaking' ? 'page' : undefined, color: label === 'Speaking' ? '#0C0E13' : '#2A2D38' }));
+    const events = ['ShopFix','ClickBank','NCAA','Destroying Excuses','Convention','ShipOffers San Diego'].map((name, i) => ({ name, slot: 'speaking-event-' + (i + 1), ph: 'Drop photo: ' + name }));
+    const shows = [
+      ['Entrepreneurs on Fire','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f3d89ab8947f9728317405d_EOFCoverArt-Black-1400.jpg','https://www.eofire.com/podcast/tonygrebmeier/'],
+      ['Underdog Empowerment','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f3d856e034fe33008020751_UE_Artwork.png','https://podbay.fm/p/underdog-empowerment/e/1539932400'],
+      ['Launch Pad','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f3d850ef5f309d896e6f901_FINAL_POD_LOGO.jpg','https://podcasts.apple.com/us/podcast/tony-grebmeier-on-struggling-to-success/id668449996?i=1000444665895'],
+      ['Garlic Marketing Show','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f41b7da64d3ee9a59e6b5b9_garlic.jpg','https://shows.acast.com/garlic/episodes/tony-grebmeier'],
+      ['Coming Clean','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f3d88b149e25c2495afe8b2_Cover.jpg','https://www.youtube.com/watch?v=Ggndn7Q0MeI'],
+      ['Growth Think Tank','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/6297054571966cbc5ad036d1_growth.jpg','https://www.youtube.com/watch?v=KOKQKbGRmFA'],
+      ['Today’s Thought Leader','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f3d83fc47c9a12f6b58ae7f_TTL-Podcast-Art-2020.png','https://www.youtube.com/watch?v=RzNwnjwP2FI'],
+      ['Sharon Spano','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/5f3d84ef2ec799633befe13a_sharon_spano.jpg','https://podcastaddict.com/'],
+      ['CMM 53','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/637c9904aec61b436a2ce316_CMM-53.webp','https://podcasts.apple.com/us/podcast/cmm53-the-one-shift-you-can-make-right-now-to-be/id1633768855?i=1000584509119'],
+      ['20 Minutes','https://cdn.prod.website-files.com/5f3943ffb340eed8d2b1e5db/629703d5f9f41c6478352cf6_20mintues.jpg','https://www.youtube.com/watch?v=XILU7ynbA-g']
+    ].map(([name,img,href]) => ({ name, img, href }));
+    return {
+      isMobile, isDesktop: !isMobile,
+      menuOpen: menu, menuClosed: !menu,
+      menuLabel: menu ? 'Close menu' : 'Open menu', menuExpanded: menu ? 'true' : 'false',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      navItems, events, shows, hasShows: true
+    };
+  }
+}
+</script>
+</body>
+</html>

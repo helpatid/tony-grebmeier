@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+img{display:block;max-width:100%}
+</style>
+</helmet>
+
+<div data-screen-label="Podcast" style="min-height:100vh;background:#FFFFFF;color:#0C0E13;font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.5">
+<div style="min-height:100vh;container-type:inline-size">
+
+  <header style="position:sticky;top:0;z-index:20;background:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:10px clamp(16px,3cqi,32px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="index.html" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
+        <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/6296ea32ea18711b6f1cddde_mobilelogo.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+        <nav style="display:flex;gap:2px;align-items:center">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+            <a href="{{ n.href }}" aria-current="{{ n.current }}" style="min-height:44px;display:flex;align-items:center;padding:0 12px;border-radius:999px;font-weight:600;font-size:15px;color:{{ n.color }}" style-hover="color:#0C0E13">{{ n.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <a href="contact.html" style="min-height:44px;display:flex;align-items:center;padding:0 18px;white-space:nowrap;border-radius:999px;border:1.5px solid #0C0E13;color:#0C0E13;font-weight:600;font-size:15px" style-hover="background:#0C0E13;color:#FFFFFF">Let’s talk</a>
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #0C0E13;background:#FFFFFF;color:#0C0E13;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">
+            <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            </sc-if>
+            <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </sc-if>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Menu" style="position:absolute;left:0;right:0;top:100%;height:calc(100vh - 64px);background:#FFFFFF;padding:16px 16px 32px;display:flex;flex-direction:column;gap:4px;overflow-y:auto;border-top:1px solid #E3E6EE">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+          <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E3E6EE;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em;color:#0C0E13">{{ n.label }}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </sc-for>
+      </nav>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="Hero" style="display:flex;flex-direction:column">
+      <div style="position:relative;height:400px;background:#3A3B3F">
+        <image-slot id="podcast-hero" shape="rect" placeholder="Drop photo: Tony at the mic, green shirt" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0),#FFFFFF);pointer-events:none"></div>
+      </div>
+      <div style="padding:0 16px;margin-top:-40px;position:relative;display:flex;flex-direction:column;gap:16px">
+        <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Be Fulfilled · The podcast</div>
+        <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(46px,14cqi,64px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">Success is messy. Let’s talk about it.</h1>
+        <p style="margin:0;color:#2A2D38;text-wrap:pretty">Nobody puts the hard part in the keynote. On Be Fulfilled, founders, authors, and a few good friends tell me what it actually took, what it cost them, and what they’d do differently. Because the climb up success mountain doesn’t have to suck.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+          <a href="#" target="_blank" rel="noopener" style="min-height:56px;padding:0 22px;border-radius:999px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="background:#1E46B8;color:#FFFFFF">Listen on Apple Podcasts <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+          <a href="#" target="_blank" rel="noopener" style="min-height:56px;padding:0 22px;border-radius:999px;background:#F3F5F9;border:1px solid #E3E6EE;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;border-color:#4A4D58">Listen on Spotify <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Hero" style="max-width:1240px;margin:0 auto;padding:24px 32px 0">
+      <div style="border-radius:36px;overflow:hidden;background:#F3F5F9;display:flex;align-items:stretch">
+        <div style="flex:1 1 0;padding:clamp(40px,5cqi,72px);display:flex;flex-direction:column;justify-content:center;gap:20px">
+          <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Be Fulfilled · The podcast</div>
+          <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(56px,6.4cqi,84px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">Success is messy. Let’s talk about it.</h1>
+          <p style="margin:0;color:#2A2D38;max-width:30em;text-wrap:pretty">Nobody puts the hard part in the keynote. On Be Fulfilled, founders, authors, and a few good friends tell me what it actually took, what it cost them, and what they’d do differently. Because the climb up success mountain doesn’t have to suck.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px">
+            <a href="#" target="_blank" rel="noopener" style="min-height:56px;min-width:270px;padding:0 22px;border-radius:999px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="background:#1E46B8;color:#FFFFFF">Listen on Apple Podcasts <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+            <a href="#" target="_blank" rel="noopener" style="min-height:56px;min-width:220px;padding:0 22px;border-radius:999px;background:#FFFFFF;border:1px solid #E3E6EE;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;border-color:#4A4D58">Listen on Spotify <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
+          </div>
+        </div>
+        <div style="flex:1 1 0;min-height:clamp(500px,52cqi,660px);position:relative;background:#3A3B3F">
+          <image-slot id="podcast-hero-desktop" shape="rect" placeholder="Drop photo: Tony at the mic, green shirt" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section aria-label="Mantra" style="background:#FFC53D;color:#0C0E13;margin-top:clamp(40px,6cqi,80px)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,5cqi,64px) clamp(16px,3cqi,32px)">
+      <p style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,5.4cqi,72px);line-height:1;letter-spacing:-.01em">The truth.<br>Three takeaways.<br>Company for the climb.</p>
+    </div>
+  </section>
+
+  <main style="max-width:1240px;margin:0 auto;padding:clamp(40px,6cqi,88px) clamp(16px,3cqi,32px) clamp(48px,6cqi,96px);display:flex;flex-direction:column;gap:clamp(56px,7cqi,104px)">
+
+    <section aria-label="Why people keep listening" style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Why people keep listening.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;padding-top:8px">
+        <div style="border-radius:24px;background:#F3F5F9;border:1px solid #E3E6EE;padding:clamp(20px,3cqi,32px);display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.1">The truth</h3>
+          <p style="margin:0;color:#2A2D38;font-size:16px;text-wrap:pretty">No scripts, no highlight reel. My guests tell me the part they usually leave out.</p>
+        </div>
+        <div style="border-radius:24px;background:#F3F5F9;border:1px solid #E3E6EE;padding:clamp(20px,3cqi,32px);display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.1">Three takeaways</h3>
+          <p style="margin:0;color:#2A2D38;font-size:16px;text-wrap:pretty">Every episode ends with three things you can put to work today. Not someday. Today.</p>
+        </div>
+        <div style="border-radius:24px;background:#F3F5F9;border:1px solid #E3E6EE;padding:clamp(20px,3cqi,32px);display:flex;flex-direction:column;gap:10px">
+          <h3 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.1">Company for the climb</h3>
+          <p style="margin:0;color:#2A2D38;font-size:16px;text-wrap:pretty">You are not the only one figuring it out as you go. Excuses are just insecurities disguised as reasons, and we drop those here.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Where this started" style="display:flex;flex-wrap:wrap;gap:clamp(20px,4cqi,56px);align-items:center">
+      <div style="flex:1 1 340px;aspect-ratio:4/3;border-radius:24px;overflow:hidden;background:#F3F5F9">
+        <image-slot id="podcast-radio" shape="rect" placeholder="Drop photo: radio days crew, Tony on the right" style="width:100%;height:100%"></image-slot>
+      </div>
+      <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#1E46B8">Where this started</div>
+        <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Before podcasts, there was radio.</h2>
+        <p style="margin:0;color:#2A2D38;max-width:30em;text-wrap:pretty">Before the podcast there was a radio career, and before that a kid from Santa Cruz who couldn’t wait to get behind a mic. That’s me on the right, station shirt and all.</p>
+        <p style="margin:0;color:#2A2D38;max-width:30em;text-wrap:pretty">I’ve been talking into a mic ever since.</p>
+      </div>
+    </section>
+
+    <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+      <div style="aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#F3F5F9">
+        <image-slot id="podcast-studio" shape="rect" placeholder="Drop photo: Tony in the studio" style="width:100%;height:100%"></image-slot>
+      </div>
+      <figcaption style="color:#4A4D58;font-size:15px;max-width:40em;text-wrap:pretty">Every episode is two people talking. No script. On camera and on mic, and if you come on the show, you’re going to have a good time.</figcaption>
+    </figure>
+
+    <section aria-label="Start with these" style="display:flex;flex-direction:column;gap:14px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#1E46B8">Start with these</div>
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(32px,4.4cqi,56px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Stories from my own life.</h2>
+      <p style="margin:0;color:#2A2D38;max-width:30em">I recorded these for my kids, Ethan and Jenny. You’re welcome to listen in.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:12px;padding-top:8px">
+        <sc-for list="{{ episodes }}" as="ep" hint-placeholder-count="5">
+          <a href="{{ ep.href }}" style="border-radius:24px;background:#F3F5F9;border:1px solid #E3E6EE;padding:16px;display:flex;gap:16px;align-items:center;color:#0C0E13" style-hover="color:#0C0E13;border-color:#4A4D58">
+            <div style="width:48px;height:48px;flex-shrink:0;border-radius:50%;background:#FFC53D;color:#0C0E13;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"></path></svg></div>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:19px;line-height:1.15">{{ ep.title }}</div>
+              <sc-if value="{{ ep.hasSub }}" hint-placeholder-val="{{ true }}"><div style="color:#4A4D58;font-size:15px;line-height:1.35">{{ ep.sub }}</div></sc-if>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-label="Guests" style="display:flex;flex-direction:column;gap:16px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,3.8cqi,48px);line-height:1;letter-spacing:-.01em;text-wrap:balance">A few people who’ve pulled up a chair</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:4px">
+        <sc-for list="{{ guests }}" as="g" hint-placeholder-count="8">
+          <div style="min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #E3E6EE;display:flex;align-items:center;font-weight:600;font-size:15px">{{ g }}</div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-label="Be a guest" style="border-radius:28px;background:#2F62E8;color:#FFFFFF;padding:clamp(28px,6cqi,88px);display:flex;flex-direction:column;gap:18px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(34px,5.4cqi,72px);line-height:1;letter-spacing:-.01em;text-wrap:balance">Got a story the world needs to hear?</h2>
+      <p style="margin:0;color:#FFFFFF;max-width:30em;text-wrap:pretty">Find your voice, then share it. That’s the whole game. If you’ve got a story that could help somebody on the climb, I’d love to hear from you.</p>
+      <a href="contact.html" style="align-self:stretch;max-width:420px;min-height:56px;padding:0 22px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;filter:brightness(.95)">Pitch yourself as a guest <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </section>
+  </main>
+
+  <footer style="background:#0C0E13;color:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5cqi,64px) clamp(16px,3cqi,32px) 28px;display:flex;flex-direction:column;gap:24px">
+      <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/5f39620bde1569493e2f2cef_tonysignature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:18px;max-width:26em">Until next time, make today the absolute best day of your life.</p>
+      <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px">
+        <sc-for list="{{ navItems }}" as="f" hint-placeholder-count="7">
+          <a href="{{ f.href }}" style="min-height:44px;display:flex;align-items:center;font-weight:600;color:#FFFFFF" style-hover="color:#FFC53D">{{ f.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;gap:12px">
+        <a href="https://www.facebook.com/tonygrebmeier" target="_blank" rel="noopener" aria-label="Facebook" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF" style-hover="border-color:#FFFFFF;color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v8h4v-8h3l.5-4h-3.5V9c0-.6.4-1 1-1z"></path></svg></a>
+        <a href="https://instagram.com/tonygrebmeier" target="_blank" rel="noopener" aria-label="Instagram" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF" style-hover="border-color:#FFFFFF;color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://www.linkedin.com/in/tony-g-6b1b68226" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:700;font-size:17px" style-hover="border-color:#FFFFFF;color:#FFFFFF">in</a>
+      </div>
+      <div style="height:1px;background:#2A2D38"></div>
+      <a href="policies.html" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
+      <div style="font-size:14px;color:#B9BDC9">© 2026 TAEO LLC</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menu: window.innerWidth < 820 ? this.state.menu : false });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const isMobile = this.state.w < 820;
+    const menu = isMobile && this.state.menu;
+    const pages = { Story:'index.html', Podcast:'podcast.html', Speaking:'speaking.html', Journal:'journal.html', Courses:'courses.html', Blog:'#', Contact:'contact.html' };
+    const navItems = Object.entries(pages).map(([label, href]) => ({ label, href, current: label === 'Podcast' ? 'page' : undefined, color: label === 'Podcast' ? '#0C0E13' : '#2A2D38' }));
+    const episodes = [
+      ['Drivers and Drainers','What fills your tank, and what empties it.'],
+      ['Be Your Word','What my Nana taught me about showing up on time.'],
+      ['Country Music Was Awful','A story about the radio days.'],
+      ['It’s a Timing Thing and You Can’t Create More of It',''],
+      ['Do You Have the Courage to Redefine Success?','']
+    ].map(([title, sub]) => ({ title, sub, hasSub: !!sub, href: title === 'Be Your Word' ? 'episode-notes.html' : '#' }));
+    return {
+      isMobile, isDesktop: !isMobile,
+      menuOpen: menu, menuClosed: !menu,
+      menuLabel: menu ? 'Close menu' : 'Open menu', menuExpanded: menu ? 'true' : 'false',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      navItems, episodes,
+      guests: ['Gino Wickman','Todd Herman','John Ruhlin','Anna David','Mike Kim','Dov Baron','Ruby Fremon','Devon Brown']
+    };
+  }
+}
+</script>
+</body>
+</html>
