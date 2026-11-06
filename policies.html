@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Policies | Tony Grebmeier</title>
+<meta name="description" content="Privacy, terms, AI use and accessibility for tonygrebmeier.com.">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -26,8 +28,8 @@ img{display:block;max-width:100%}
 
   <header style="position:sticky;top:0;z-index:20;background:#FFFFFF">
     <div style="max-width:1240px;margin:0 auto;padding:10px clamp(16px,3cqi,32px);display:flex;align-items:center;justify-content:space-between;gap:16px">
-      <a href="index.html" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
-        <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/6296ea32ea18711b6f1cddde_mobilelogo.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
+      <a href="/" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
+        <img src="assets/logo-tony-grebmeier.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
       </a>
       <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
         <nav style="display:flex;gap:2px;align-items:center">
@@ -37,7 +39,6 @@ img{display:block;max-width:100%}
         </nav>
       </sc-if>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-        <a href="contact.html" style="min-height:44px;display:flex;align-items:center;padding:0 18px;white-space:nowrap;border-radius:999px;border:1.5px solid #0C0E13;color:#0C0E13;font-weight:600;font-size:15px" style-hover="background:#0C0E13;color:#FFFFFF">Let’s talk</a>
         <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
           <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #0C0E13;background:#FFFFFF;color:#0C0E13;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">
             <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
@@ -86,7 +87,7 @@ img{display:block;max-width:100%}
       <article style="border-radius:24px;background:#2F62E8;color:#FFFFFF;padding:clamp(20px,3cqi,36px);display:flex;flex-direction:column;gap:14px">
         <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;letter-spacing:-.01em;font-size:clamp(26px,2.8cqi,34px);line-height:1.05;text-wrap:balance">Accessibility</h2>
         <p style="margin:0;color:#FFFFFF;font-size:16px;text-wrap:pretty">Everybody belongs here. We built this site to meet WCAG 2.2 AA and we keep testing it. If something gets in your way, tell me and we’ll fix it.</p>
-        <a href="contact.html" style="margin-top:auto;align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;color:#FFFFFF" style-hover="color:#FFC53D">Report an access problem <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a href="/contact" style="margin-top:auto;align-self:flex-start;min-height:44px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;color:#FFFFFF" style-hover="color:#FFC53D">Report an access problem <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </article>
     </section>
 
@@ -94,7 +95,7 @@ img{display:block;max-width:100%}
 
   <footer style="background:#0C0E13;color:#FFFFFF">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5cqi,64px) clamp(16px,3cqi,32px) 28px;display:flex;flex-direction:column;gap:24px">
-      <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/5f39620bde1569493e2f2cef_tonysignature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
+      <img src="assets/signature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
       <p style="margin:0;font-size:18px;max-width:26em">Until next time, make today the absolute best day of your life.</p>
       <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px">
         <sc-for list="{{ navItems }}" as="f" hint-placeholder-count="7">
@@ -107,7 +108,7 @@ img{display:block;max-width:100%}
         <a href="https://www.linkedin.com/in/tony-g-6b1b68226" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:700;font-size:17px" style-hover="border-color:#FFFFFF;color:#FFFFFF">in</a>
       </div>
       <div style="height:1px;background:#2A2D38"></div>
-      <a href="policies.html" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
+      <a href="/policies" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
       <div style="font-size:14px;color:#B9BDC9">© 2026 TAEO LLC</div>
     </div>
   </footer>
@@ -126,7 +127,7 @@ class Component extends DCLogic {
   renderVals() {
     const isMobile = this.state.w < 820;
     const menu = isMobile && this.state.menu;
-    const pages = { Story:'index.html', Podcast:'podcast.html', Speaking:'speaking.html', Journal:'journal.html', Courses:'courses.html', Blog:'#', Contact:'contact.html' };
+    const pages = { About:'/about', Podcast:'/podcast', Speaking:'/speaking', Journal:'/journal', Investments:'/investments', Blog:'/blog', Contact:'/contact' };
     const navItems = Object.entries(pages).map(([label, href]) => ({ label, href, current: label === 'Policies' ? 'page' : undefined, color: label === 'Policies' ? '#0C0E13' : '#2A2D38' }));
     return {
       isMobile, isDesktop: !isMobile,

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Tony Grebmeier</title>
+<meta name="description" content="Speaking, the podcast, the journal or an investment idea. Send Tony Grebmeier a note.">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -26,8 +28,8 @@ img{display:block;max-width:100%}
 
   <header style="position:sticky;top:0;z-index:20;background:#FFFFFF">
     <div style="max-width:1240px;margin:0 auto;padding:10px clamp(16px,3cqi,32px);display:flex;align-items:center;justify-content:space-between;gap:16px">
-      <a href="index.html" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
-        <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/6296ea32ea18711b6f1cddde_mobilelogo.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
+      <a href="/" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
+        <img src="assets/logo-tony-grebmeier.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
       </a>
       <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
         <nav style="display:flex;gap:2px;align-items:center">
@@ -37,7 +39,6 @@ img{display:block;max-width:100%}
         </nav>
       </sc-if>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-        <a href="contact.html" style="min-height:44px;display:flex;align-items:center;padding:0 18px;white-space:nowrap;border-radius:999px;border:1.5px solid #0C0E13;color:#0C0E13;font-weight:600;font-size:15px" style-hover="background:#0C0E13;color:#FFFFFF">Let’s talk</a>
         <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
           <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #0C0E13;background:#FFFFFF;color:#0C0E13;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">
             <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
@@ -61,68 +62,29 @@ img{display:block;max-width:100%}
     </sc-if>
   </header>
 
-  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
-    <section data-screen-label="Hero" style="display:flex;flex-direction:column">
-      <div style="position:relative;height:400px;background:#3A3B3F">
-        <image-slot id="contact-hero" shape="rect" placeholder="Drop photo: Tony mid-shout, navy blazer" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
-        <div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(to bottom,rgba(255,255,255,0),#FFFFFF);pointer-events:none"></div>
-      </div>
-      <div style="padding:0 16px;margin-top:-40px;position:relative;display:flex;flex-direction:column;gap:16px">
-        <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Contact</div>
-        <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(46px,14cqi,64px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">So. What’s going on?</h1>
-        <p style="margin:0;color:#2A2D38;text-wrap:pretty;overflow-wrap:anywhere">Speaking, the podcast, the journal, ShipOffers, or you just need to tell somebody what’s going on. All of it is welcome here. I do my best to get back to everyone within two business days. Prefer email? hello@befulfilledjournal.com</p>
-        <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
-          <a href="mailto:hello@befulfilledjournal.com" style="background:#F3F5F9;min-height:56px;padding:0 22px;border-radius:999px;border:1px solid #E3E6EE;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;border-color:#4A4D58">Email me instead <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
-        </div>
-      </div>
+  <main style="max-width:720px;margin:0 auto;padding:clamp(32px,5cqi,72px) clamp(16px,3cqi,32px) clamp(48px,6cqi,96px);display:flex;flex-direction:column;gap:28px">
+    <section aria-label="Intro" style="display:flex;flex-direction:column;gap:14px">
+      <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(46px,6.4cqi,84px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">Let’s talk.</h1>
+      <p style="margin:0;color:#2A2D38;max-width:32em;text-wrap:pretty">Speaking, the podcast, the journal or an investment idea. Send a note and I’ll get back to you within two business days.</p>
     </section>
-  </sc-if>
-  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
-    <section data-screen-label="Hero" style="max-width:1240px;margin:0 auto;padding:24px 32px 0">
-      <div style="border-radius:36px;overflow:hidden;background:#F3F5F9;display:flex;align-items:stretch">
-        <div style="flex:1 1 0;padding:clamp(40px,5cqi,72px);display:flex;flex-direction:column;justify-content:center;gap:20px">
-          <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Contact</div>
-          <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(56px,6.4cqi,84px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">So. What’s going on?</h1>
-          <p style="margin:0;color:#2A2D38;max-width:30em;text-wrap:pretty">Speaking, the podcast, the journal, ShipOffers, or you just need to tell somebody what’s going on. All of it is welcome here. I do my best to get back to everyone within two business days. Prefer email? hello@befulfilledjournal.com</p>
-          <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px">
-            <a href="mailto:hello@befulfilledjournal.com" style="min-width:260px;background:#FFFFFF;min-height:56px;padding:0 22px;border-radius:999px;border:1px solid #E3E6EE;color:#0C0E13;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:space-between;gap:12px" style-hover="color:#0C0E13;border-color:#4A4D58">Email me instead <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"></path></svg></a>
-          </div>
-        </div>
-        <div style="flex:1 1 0;min-height:clamp(500px,52cqi,660px);position:relative;background:#3A3B3F">
-          <image-slot id="contact-hero-desktop" shape="rect" placeholder="Drop photo: Tony mid-shout, navy blazer" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
-        </div>
-      </div>
-    </section>
-  </sc-if>
 
-  <section aria-label="Mantra" style="background:#FFC53D;color:#0C0E13;margin-top:clamp(40px,6cqi,80px)">
-    <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,5cqi,64px) clamp(16px,3cqi,32px)">
-      <p style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,5.4cqi,72px);line-height:1;letter-spacing:-.01em">Two business days.<br>A real person reads it.<br>Usually me.</p>
-    </div>
-  </section>
-
-  <main style="max-width:1240px;margin:0 auto;padding:clamp(40px,6cqi,88px) clamp(16px,3cqi,32px) clamp(48px,6cqi,96px);display:flex;flex-wrap:wrap;gap:clamp(32px,5cqi,72px);align-items:flex-start">
-
-    <section aria-label="Contact form" style="flex:1 1 440px;min-width:0;max-width:720px">
+    <section aria-label="Contact form">
       <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
-        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:20px">
+        <form name="contact" onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:20px">
           <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;min-width:0">
             <legend style="font-size:15px;font-weight:700;color:#0C0E13;padding:0 0 12px">What’s this about?</legend>
             <div style="display:flex;flex-wrap:wrap;gap:10px">
-              <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="4">
+              <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="5">
                 <button type="button" onClick="{{ tp.pick }}" aria-pressed="{{ tp.pressed }}" style="min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid {{ tp.border }};background:{{ tp.bg }};color:{{ tp.color }};font:600 16px 'Instrument Sans',sans-serif;cursor:pointer">{{ tp.label }}</button>
               </sc-for>
             </div>
+            <input type="hidden" name="topic" value="{{ topic }}">
           </fieldset>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
-            <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-size:15px;font-weight:700;color:#0C0E13">First name</span><input name="first" type="text" autocomplete="given-name" required="" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></label>
-            <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="font-size:15px;font-weight:700;color:#0C0E13">Last name</span><input name="last" type="text" autocomplete="family-name" required="" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></label>
-          </div>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700;color:#0C0E13">Name</span><input name="name" type="text" autocomplete="name" required="" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></label>
           <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700;color:#0C0E13">Email</span><input name="email" type="email" autocomplete="email" required="" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></label>
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700;color:#0C0E13">Phone (optional)</span><input name="phone" type="tel" autocomplete="tel" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></label>
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700;color:#0C0E13">Your message</span><textarea name="message" required="" rows="6" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none;resize:vertical" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></textarea></label>
-          <button type="submit" style="min-height:56px;padding:0 22px;border:0;border-radius:999px;background:#2F62E8;color:#FFFFFF;font:700 17px 'Instrument Sans',sans-serif;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer" style-hover="background:#1E46B8">Send it <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
-          <p style="margin:0;color:#2A2D38;font-size:15px">We only use what you send to reply to you. Details in our <a href="policies.html" style="color:#1E46B8;text-decoration:underline" style-hover="color:#0C0E13">privacy policy</a>.</p>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700;color:#0C0E13">Message</span><textarea name="message" required="" rows="6" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none;resize:vertical" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></textarea></label>
+          <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:0 28px;border-radius:12px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;line-height:1.2;border:0;font-family:'Instrument Sans',sans-serif;cursor:pointer;width:100%" style-hover="background:#1E46B8">Send</button>
+          <p style="margin:0;color:#2A2D38;font-size:15px">I only use what you send to reply to you. <a href="/policies" style="color:#1E46B8;text-decoration:underline" style-hover="color:#0C0E13">Privacy policy</a>.</p>
         </form>
       </sc-if>
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
@@ -134,15 +96,12 @@ img{display:block;max-width:100%}
       </sc-if>
     </section>
 
-    <aside aria-label="Crisis support" style="flex:1 1 320px;border-radius:28px;background:#FFC53D;color:#0C0E13;padding:clamp(24px,4cqi,44px);display:flex;flex-direction:column;gap:12px">
-      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3cqi,32px);line-height:1.1;text-wrap:balance">If you’re in a dark place right now</h2>
-      <p style="margin:0;color:#0C0E13;text-wrap:pretty">Please don’t wait on my inbox. In the US, call or text <a href="tel:988" style="font-weight:700;text-decoration:underline" style-hover="color:#0C0E13">988</a> any time. Somebody showed up for me. Somebody will show up for you.</p>
-    </aside>
+    <p aria-label="Crisis support" style="margin:0;color:#4A4D58;text-wrap:pretty">If you’re in a dark place right now, please don’t wait on my inbox. In the US, call or text <a href="tel:988" style="font-weight:700;text-decoration:underline;color:#4A4D58" style-hover="color:#0C0E13">988</a> any time. Somebody showed up for me. Somebody will show up for you.</p>
   </main>
 
   <footer style="background:#0C0E13;color:#FFFFFF">
     <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5cqi,64px) clamp(16px,3cqi,32px) 28px;display:flex;flex-direction:column;gap:24px">
-      <img src="https://cdn.prod.website-files.com/5f359ca6c4e80dfd2a3f1492/5f39620bde1569493e2f2cef_tonysignature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
+      <img src="assets/signature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
       <p style="margin:0;font-size:18px;max-width:26em">Until next time, make today the absolute best day of your life.</p>
       <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px">
         <sc-for list="{{ navItems }}" as="f" hint-placeholder-count="7">
@@ -155,7 +114,7 @@ img{display:block;max-width:100%}
         <a href="https://www.linkedin.com/in/tony-g-6b1b68226" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:700;font-size:17px" style-hover="border-color:#FFFFFF;color:#FFFFFF">in</a>
       </div>
       <div style="height:1px;background:#2A2D38"></div>
-      <a href="policies.html" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
+      <a href="/policies" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
       <div style="font-size:14px;color:#B9BDC9">© 2026 TAEO LLC</div>
     </div>
   </footer>
@@ -165,25 +124,30 @@ img{display:block;max-width:100%}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, topic: 'Speaking', sent: false };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, topic: 'Something else', sent: false };
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth, menu: window.innerWidth < 820 ? this.state.menu : false });
     window.addEventListener('resize', this.onResize);
+    try {
+      const k = new URLSearchParams(window.location.search).get('topic');
+      const map = { speaking: 'Speaking', podcast: 'Be a podcast guest', journal: 'Journal order', investment: 'Investment opportunity', other: 'Something else' };
+      if (k && map[k]) this.setState({ topic: map[k] });
+    } catch (e) {}
   }
   componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
   renderVals() {
     const isMobile = this.state.w < 820;
     const menu = isMobile && this.state.menu;
-    const pages = { Story:'index.html', Podcast:'podcast.html', Speaking:'speaking.html', Journal:'journal.html', Courses:'courses.html', Blog:'#', Contact:'contact.html' };
+    const pages = { About:'/about', Podcast:'/podcast', Speaking:'/speaking', Journal:'/journal', Investments:'/investments', Blog:'/blog', Contact:'/contact' };
     const navItems = Object.entries(pages).map(([label, href]) => ({ label, href, current: label === 'Contact' ? 'page' : undefined, color: label === 'Contact' ? '#0C0E13' : '#2A2D38' }));
-    const topics = ['Speaking','Podcast','Journal order','Just saying hi'].map(label => { const on = this.state.topic === label; return { label, pressed: on ? 'true' : 'false', bg: on ? '#0C0E13' : '#FFFFFF', color: on ? '#FFFFFF' : '#0C0E13', border: on ? '#0C0E13' : '#E3E6EE', pick: () => this.setState({ topic: label }) }; });
+    const topics = ['Speaking','Be a podcast guest','Journal order','Investment opportunity','Something else'].map(label => { const on = this.state.topic === label; return { label, pressed: on ? 'true' : 'false', bg: on ? '#0C0E13' : '#FFFFFF', color: on ? '#FFFFFF' : '#0C0E13', border: on ? '#0C0E13' : '#E3E6EE', pick: () => this.setState({ topic: label }) }; });
     return {
       isMobile, isDesktop: !isMobile,
       menuOpen: menu, menuClosed: !menu,
       menuLabel: menu ? 'Close menu' : 'Open menu', menuExpanded: menu ? 'true' : 'false',
       toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
       closeMenu: () => this.setState({ menu: false }),
-      navItems, topics,
+      navItems, topics, topic: this.state.topic,
       sent: this.state.sent, notSent: !this.state.sent,
       submit: e => { e.preventDefault(); this.setState({ sent: true }); },
       reset: () => this.setState({ sent: false })

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Tony Grebmeier</title>
+<meta name="description" content="Short reads, episode notes and quotes from Tony Grebmeier.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800&amp;family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+img{display:block;max-width:100%}
+</style>
+</helmet>
+
+<div data-screen-label="Blog" style="min-height:100vh;background:#FFFFFF;color:#0C0E13;font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.5">
+<div style="min-height:100vh;container-type:inline-size">
+
+  <header style="position:sticky;top:0;z-index:20;background:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:10px clamp(16px,3cqi,32px);display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <a href="/" aria-label="Tony Grebmeier home" style="display:flex;align-items:center;min-height:44px;flex-shrink:1;min-width:0">
+        <img src="assets/logo-tony-grebmeier.png" alt="Tony Grebmeier" style="width:clamp(150px,40cqi,190px);height:auto;max-width:none">
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ false }}">
+        <nav style="display:flex;gap:2px;align-items:center">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+            <a href="{{ n.href }}" aria-current="{{ n.current }}" style="min-height:44px;display:flex;align-items:center;padding:0 12px;border-radius:999px;font-weight:600;font-size:15px;color:{{ n.color }}" style-hover="color:#0C0E13">{{ n.label }}</a>
+          </sc-for>
+        </nav>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuExpanded }}" style="width:44px;height:44px;border-radius:50%;border:1.5px solid #0C0E13;background:#FFFFFF;color:#0C0E13;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0">
+            <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+            </sc-if>
+            <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </sc-if>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav aria-label="Menu" style="position:absolute;left:0;right:0;top:100%;height:calc(100vh - 64px);background:#FFFFFF;padding:16px 16px 32px;display:flex;flex-direction:column;gap:4px;overflow-y:auto;border-top:1px solid #E3E6EE">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+          <a href="{{ n.href }}" onClick="{{ closeMenu }}" style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E3E6EE;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em;color:#0C0E13">{{ n.label }}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </sc-for>
+      </nav>
+    </sc-if>
+  </header>
+
+  <section data-screen-label="Hero" style="max-width:1240px;margin:0 auto;padding:clamp(0px,2cqi,24px) clamp(0px,2.6cqi,32px) 0">
+    <div style="border-radius:clamp(0px,3cqi,36px);overflow:hidden;background:#F3F5F9;display:flex;flex-wrap:wrap-reverse;align-items:stretch">
+      <div style="flex:1 1 380px;min-width:0;padding:clamp(24px,5cqi,72px) clamp(16px,5cqi,72px);display:flex;flex-direction:column;justify-content:center;gap:20px">
+        <div style="align-self:flex-start;padding:7px 14px;border-radius:999px;background:#FFC53D;color:#0C0E13;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.2">Blog and show notes</div>
+        <h1 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(46px,6.4cqi,84px);line-height:.95;letter-spacing:-.01em;text-wrap:balance">Maybe your focus needs a new direction.</h1>
+        <p style="margin:0;color:#2A2D38;max-width:32em;text-wrap:pretty;max-width:30em">Short reads, episode notes, and the occasional quote worth stealing. Bookmark it. Something new lands most weeks.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:4px"><a href="#posts" style="display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:0 28px;border-radius:12px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;line-height:1.2;align-self:flex-start" style-hover="background:#1E46B8;color:#FFFFFF">Read the latest</a></div>
+      </div>
+      <div style="flex:1 1 380px;min-height:clamp(360px,52cqi,660px);position:relative;background:#3A3B3F">
+        <image-slot id="blog-hero" shape="rect" placeholder="Drop photo: Tony in navy blazer, grey backdrop" style="position:absolute;inset:0;width:100%;height:100%"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Mantra" style="background:#FFC53D;color:#0C0E13;margin-top:clamp(40px,6cqi,80px)">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(28px,5cqi,64px) clamp(16px,3cqi,32px)">
+      <p style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(26px,5.4cqi,72px);line-height:1;letter-spacing:-.01em">Short reads.<br>Episode notes.<br>Quotes worth stealing.</p>
+    </div>
+  </section>
+
+  <main style="max-width:1240px;margin:0 auto;padding:clamp(40px,6cqi,88px) clamp(16px,3cqi,32px) clamp(48px,6cqi,96px);display:flex;flex-direction:column;gap:clamp(48px,6cqi,88px)">
+
+    <section id="posts" aria-label="Posts" style="display:flex;flex-direction:column;gap:20px;scroll-margin-top:80px">
+      <div role="group" aria-label="Filter posts" style="display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.pressed }}" style="min-height:48px;padding:0 22px;border-radius:999px;border:1.5px solid {{ f.border }};background:{{ f.bg }};color:{{ f.color }};font:600 16px 'Instrument Sans',sans-serif;cursor:pointer">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:16px">
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="8">
+          <a href="{{ p.href }}" style="border-radius:24px;background:#F3F5F9;border:1px solid #E3E6EE;padding:16px 16px 22px;display:flex;flex-direction:column;gap:10px;color:#0C0E13" style-hover="color:#0C0E13;border-color:#4A4D58">
+            <div style="aspect-ratio:5/2;border-radius:16px;background:{{ p.tile }};color:#FFFFFF;display:flex;align-items:flex-end;padding:14px 20px;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:44px;line-height:1">{{ p.n }}</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#1E46B8;padding:6px 4px 0">{{ p.kicker }}</div>
+            <div style="font-family:'Inter Tight',sans-serif;font-weight:800;font-size:22px;line-height:1.15;padding:0 4px;text-wrap:balance">{{ p.title }}</div>
+            <div style="color:#4A4D58;font-size:16px;line-height:1.45;padding:0 4px;text-wrap:pretty">{{ p.sub }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-label="Get new posts" style="align-self:stretch;max-width:640px;border-radius:24px;background:#F3F5F9;border:1px solid #E3E6EE;padding:clamp(24px,4cqi,40px);display:flex;flex-direction:column;gap:14px">
+      <h2 style="margin:0;font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(24px,3cqi,32px);line-height:1.1">Get the new ones first.</h2>
+      <p style="margin:0;color:#2A2D38;text-wrap:pretty">One email when a new episode or post goes up. No noise, no pitch.</p>
+      <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ subscribe }}" style="display:flex;flex-direction:column;gap:12px;padding-top:4px">
+          <label style="display:flex;flex-direction:column"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email</span><input type="email" name="email" required="" autocomplete="email" placeholder="Email" style="width:100%;min-height:56px;padding:12px 16px;border-radius:14px;border:1.5px solid #E3E6EE;background:#FFFFFF;font:400 16px 'Instrument Sans',sans-serif;color:#0C0E13;outline:none" style-focus="border-color:#2F62E8;box-shadow:0 0 0 3px rgba(47,98,232,.18)"></label>
+          <button type="submit" style="display:inline-flex;align-items:center;justify-content:center;text-align:center;min-height:56px;padding:0 28px;border-radius:12px;background:#2F62E8;color:#FFFFFF;font-weight:700;font-size:17px;line-height:1.2;border:0;font-family:'Instrument Sans',sans-serif;cursor:pointer;width:100%" style-hover="background:#1E46B8">Send me new posts</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+        <p role="status" style="margin:0;font-weight:700;color:#0C0E13">You’re on the list. Thank you.</p>
+      </sc-if>
+    </section>
+  </main>
+
+  <footer style="background:#0C0E13;color:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:clamp(36px,5cqi,64px) clamp(16px,3cqi,32px) 28px;display:flex;flex-direction:column;gap:24px">
+      <img src="assets/signature-white.svg" alt="Tony Grebmeier signature" style="height:56px;width:auto;align-self:flex-start">
+      <p style="margin:0;font-size:18px;max-width:26em">Until next time, make today the absolute best day of your life.</p>
+      <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:4px 20px">
+        <sc-for list="{{ navItems }}" as="f" hint-placeholder-count="7">
+          <a href="{{ f.href }}" style="min-height:44px;display:flex;align-items:center;font-weight:600;color:#FFFFFF" style-hover="color:#FFC53D">{{ f.label }}</a>
+        </sc-for>
+      </nav>
+      <div style="display:flex;gap:12px">
+        <a href="https://www.facebook.com/tonygrebmeier" target="_blank" rel="noopener" aria-label="Facebook" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF" style-hover="border-color:#FFFFFF;color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v8h4v-8h3l.5-4h-3.5V9c0-.6.4-1 1-1z"></path></svg></a>
+        <a href="https://instagram.com/tonygrebmeier" target="_blank" rel="noopener" aria-label="Instagram" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF" style-hover="border-color:#FFFFFF;color:#FFFFFF"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://www.linkedin.com/in/tony-g-6b1b68226" target="_blank" rel="noopener" aria-label="LinkedIn" style="width:48px;height:48px;border-radius:50%;border:1px solid #3A3D48;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:700;font-size:17px" style-hover="border-color:#FFFFFF;color:#FFFFFF">in</a>
+      </div>
+      <div style="height:1px;background:#2A2D38"></div>
+      <a href="/policies" style="align-self:flex-start;min-height:32px;display:flex;align-items:center;font-size:14px;font-weight:600;color:#B9BDC9" style-hover="color:#FFFFFF">Privacy, terms, AI, and accessibility</a>
+      <div style="font-size:14px;color:#B9BDC9">© 2026 TAEO LLC</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, filter: 'All', subscribed: false };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, menu: window.innerWidth < 820 ? this.state.menu : false });
+    window.addEventListener('resize', this.onResize);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const isMobile = this.state.w < 820;
+    const menu = isMobile && this.state.menu;
+    const pages = { About:'/about', Podcast:'/podcast', Speaking:'/speaking', Journal:'/journal', Investments:'/investments', Blog:'/blog', Contact:'/contact' };
+    const navItems = Object.entries(pages).map(([label, href]) => ({ label, href, current: label === 'Blog' ? 'page' : undefined, color: label === 'Blog' ? '#0C0E13' : '#2A2D38' }));
+    const all = [
+      ['episode','Season 7','Be Your Word','Consistency creates safety. A story about my Nana, a real estate office, and never being a second late.'],
+      ['episode','Season 7','Drivers and Drainers','What fills your tank, and what empties it.'],
+      ['episode','Season 7','Country Music Was Awful','A story about the radio days.'],
+      ['episode','Season 7','Hindsight is 2020','Looking back without getting stuck there.'],
+      ['article','Article','8 Habits of the Most Successful Entrepreneurs','The habits that keep showing up in the people who make it.'],
+      ['article','Article','Affirmations for Entrepreneurs','Words to start the day with when the day starts loud.'],
+      ['article','Article','The Power of Podcasting (5 Business Benefits)','Why I tell every entrepreneur to pick up a mic.'],
+      ['quote','Article','12 Motivational Quotes To Encourage Success','For the days you need somebody else’s words.']
+    ].map(([type, kicker, title, sub], i) => ({ type, kicker, title, sub, n: String(i + 1).padStart(2, '0'), tile: i % 2 ? '#1E46B8' : '#2F62E8', href: type === 'episode' ? '/episode-notes' : '#' }));
+    const want = { All: null, Episodes: 'episode', Articles: 'article', Quotes: 'quote' }[this.state.filter];
+    const posts = all.filter(p => !want || p.type === want || (want === 'article' && p.type === 'quote'));
+    const filters = ['All','Episodes','Articles','Quotes'].map(label => { const on = this.state.filter === label; return { label, pressed: on ? 'true' : 'false', bg: on ? '#0C0E13' : '#FFFFFF', color: on ? '#FFFFFF' : '#0C0E13', border: on ? '#0C0E13' : '#E3E6EE', pick: () => this.setState({ filter: label }) }; });
+    return {
+      isMobile, isDesktop: !isMobile,
+      menuOpen: menu, menuClosed: !menu,
+      menuLabel: menu ? 'Close menu' : 'Open menu', menuExpanded: menu ? 'true' : 'false',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      navItems, posts, filters,
+      subscribed: this.state.subscribed, notSubscribed: !this.state.subscribed,
+      subscribe: e => { e.preventDefault(); this.setState({ subscribed: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
